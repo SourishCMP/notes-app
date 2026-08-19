@@ -26,14 +26,14 @@ const handleSubmit = async (e) => {
       content,
     });
 
-    toast.success("Note created successfully!");
+    toast.success("Task created successfully!");
     navigate("/");
   } catch (error) {
-    toast.error("Failed to create note");
+    toast.error("Failed to create task");
     if(error.response.status ===429)
-      toast.error("Slow down! You are creating notes too")
+      toast.error("Slow down! You are creating tasks too")
     else{
-      toast.error("Failed to create note");
+      toast.error("Failed to create task");
     }
   } finally {
     setLoading(false);
@@ -46,13 +46,13 @@ const handleSubmit = async (e) => {
         <div className="max-w-2xl mx-auto">
           <Link to="/" className="btn btn-ghost mb-6">
             <ArrowLeftIcon className="size-5" />
-            Back to Notes
+            Back to Tasks
           </Link>
 
           <div className="card bg-base-100">
             <div className="card-body">
               <h2 className="card-title text-2xl mb-4">
-                Create New Note
+                Create New Task
               </h2>
 
               <form onSubmit={handleSubmit}>
@@ -63,7 +63,7 @@ const handleSubmit = async (e) => {
 
                   <input
                     type="text"
-                    placeholder="Note"
+                    placeholder="Task"
                     className="input input-bordered"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
